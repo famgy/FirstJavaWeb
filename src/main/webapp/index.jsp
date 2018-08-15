@@ -47,10 +47,10 @@
 </nav>
 
 <div class="container" id="login">
-  <form  method="post" action="/login" accept-charset="utf-8">
+  <form method="post" action="/login" accept-charset="utf-8">
     <div class="input-prepend">
       <span class="add-on"><img src="/images/login/user-solid.svg" width="25" height="25"></span>
-      <input type="text" name="user" required="required" placeholder="Username">
+      <input id="username" type="text" name="user" required="required" placeholder="Username">
     </div>
 
     <div class="input-prepend">
@@ -63,6 +63,8 @@
     </div>
   </form>
 </div>
-
+<script>
+    document.getElementById("username").focus();
+</script>
 </body>
 </html>

@@ -13,43 +13,9 @@
     <link href="webjars/bootstrap-glyphicons/bdd2cbfba0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="webjars/jquery-file-upload/9.10.1/css/jquery.fileupload.css" rel="stylesheet">
     <link href="webjars/jquery-file-upload/9.10.1/css/jquery.fileupload-ui.css" rel="stylesheet">
-
-    <script src="webjars/jquery/3.0.0/jquery.min.js"></script>
-    <script src="webjars/jquery-ui/1.9.0/development-bundle/ui/jquery.ui.widget.js"></script>
-    <script src="webjars/jquery-file-upload/9.10.1/js/jquery.fileupload.js"></script>
-    <script src="webjars/jquery-file-upload/9.10.1/js/jquery.iframe-transport.js"></script>
-
-    <style>
-        .bar {
-            height: 18px;
-            background: green;
-        }
-    </style>
-
-    <script>
-        $(document).ready(function () {
-            $('#fileupload').fileupload({
-                dataType: 'json',
-                add: function (e, data) {
-                    data.context = $('<p/>').text('Uploading...').appendTo(document.body);
-                    data.submit();
-                },
-                done: function (e, data) {
-                    $.each(data.result.files, function (index, file) {
-                        $('<p/>').text(file.name).appendTo(document.body);
-                    });
-                    data.context.text('Upload finished.');
-                },
-                progressall: function (e,data) {
-                    var progress = parseInt(data.loaded / data.total * 100, 10);
-                    $('#progress .bar').css(
-                        'width',
-                        progress + '%'
-                    );
-                }
-            });
-        });
-    </script>
+    <link href="webjars/perfect-scrollbar/0.8.1/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="/css/style.css" type="text/css" rel="stylesheet"/>
+    <link  href="/css/application_list.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -81,18 +47,25 @@
     <H1 style="margin: 10px">Welcome to workstation</H1><br/>
 </div>
 
-<div class="container">
-    <form id="fileupload" action="upload" method="POST" enctype="multipart/form-data">
-        上传文件：
-        <span class="btn btn-success fileinput-button">
-                <i class="glyphicon glyphicon-plus"></i>
-                <span>Select files...</span>
-                <input type="file" name="files[]" multiple>
-            </span>
-    </form>
-    <div id="progress">
-        <div class="bar" style="width: 0%;"></div>
+</div>
+<div class="pop"></div>
+<div class="pop-cont project-form" id="upload-box" >
+    <h2>
+        <span>上传应用</span>
+    </h2>
+    <div class="form-horizontal progress-wrap">
+        <span class="find-box js-find-box">11%</span>
+        <span class="upload-img j-upload-img"></span>
+        <span class="upload-application j-upload-application"></span>
+        <p class="upload-text">正在上传应用，请稍后</p>
     </div>
+</div>
+
+<div class="container">
+    <span class="btn btn-success fileinput-button">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span id="browse" href="javascript:;">Select files...</span>
+    </span>
 </div>
 
 <div class="container">
@@ -118,6 +91,21 @@
         </tbody>
     </table>
 </div>
+
+<script src="webjars/jquery/3.0.0/jquery.min.js"></script>
+<%--<script src="webjars/jquery-ui/1.9.0/development-bundle/ui/jquery.ui.widget.js"></script>--%>
+<%--<script src="webjars/jquery-file-upload/9.10.1/js/jquery.fileupload.js"></script>--%>
+<%--<script src="webjars/jquery-file-upload/9.10.1/js/jquery.iframe-transport.js"></script>--%>
+<script src="webjars/plupload/3.1.2/js/plupload.full.min.js"></script>
+<script src="/js/enterprise.js"></script>
+<script src="/js/application.js"></script>
+<script>
+    var G_URLS={
+        'deletes':"/upload",
+        'upload':"/upload",
+        'bulk_upload':"/upload"
+    };
+</script>
 
 </body>
 </html>
