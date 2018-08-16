@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(name = "UploadServlet")
@@ -40,7 +41,7 @@ public class UploadServlet extends HttpServlet {
         }
 
         ServletFileUpload uploadHandler = new ServletFileUpload(new DiskFileItemFactory());
-//        PrintWriter writer = response.getWriter();
+        PrintWriter writer = response.getWriter();
         response.setContentType("application/json");
         JSONArray json = new JSONArray();
         try {
@@ -53,6 +54,8 @@ public class UploadServlet extends HttpServlet {
                     jsono.put("name", item.getName());
                     jsono.put("size", item.getSize());
                     jsono.put("url", "upload?getfile=" + item.getName());
+                    jsono.put("success", 1);
+                    jsono.put("redirect_url", "/workstation");
                     json.put(jsono);
                 }
             }
@@ -61,10 +64,9 @@ public class UploadServlet extends HttpServlet {
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
-//            writer.write(json.toString());
-//            writer.close();
+            writer.write(json.toString());
+            writer.close();
         }
-
 
 
 //        //得到上传文件的保存目录，将上传的文件存放于WEB-INF目录下，不允许外界直接访问，保证上传文件的安全
@@ -192,8 +194,8 @@ public class UploadServlet extends HttpServlet {
 //            e.printStackTrace();
 //        }
 //
-        request.setAttribute("message", "ok");
-        request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+//        request.setAttribute("message", "ok");
+//        request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
     }
 
     private String makePath(String savePath){

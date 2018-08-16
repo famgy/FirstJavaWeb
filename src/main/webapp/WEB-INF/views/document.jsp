@@ -26,7 +26,7 @@
                 <a class="nav-link" href="/logging">Logging</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/document">Documentation</a>
+                <a class="nav-link" href="/document">Document</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

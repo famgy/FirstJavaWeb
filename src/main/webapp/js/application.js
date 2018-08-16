@@ -7,6 +7,19 @@ $(document).ready(function () {
             if (file.percent != 100 ){
                 enterprise.openPop($('#upload-box'));
                 $('.js-find-box').html(file.percent+'%');
+            } else {
+                enterprise.closePop($('#upload-box'));
+
+            }
+        },
+        FileUploaded: function(up, file, info) {
+            var response = $.parseJSON(info.response);
+            var msgs=response[0];
+            if (msgs.success == 1){
+                location.href = msgs.redirect_url;
+            }else{
+                enterprise.showFntext2_error(msgs,3000);
+                enterprise.countDown(3);
             }
         },
         Error: function(up, error) {

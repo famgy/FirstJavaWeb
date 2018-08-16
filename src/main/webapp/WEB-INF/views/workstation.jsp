@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: famgy
@@ -10,10 +11,11 @@
 <head>
     <title>Famgy workstation</title>
     <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <%--<link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">--%>
     <link href="webjars/bootstrap-glyphicons/bdd2cbfba0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="webjars/jquery-file-upload/9.10.1/css/jquery.fileupload.css" rel="stylesheet">
     <link href="webjars/jquery-file-upload/9.10.1/css/jquery.fileupload-ui.css" rel="stylesheet">
-    <link href="webjars/perfect-scrollbar/0.8.1/css/perfect-scrollbar.css" rel="stylesheet">
+    <%--<link href="webjars/perfect-scrollbar/0.8.1/css/perfect-scrollbar.css" rel="stylesheet">--%>
     <link href="/css/style.css" type="text/css" rel="stylesheet"/>
     <link  href="/css/application_list.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -55,16 +57,16 @@
     </h2>
     <div class="form-horizontal progress-wrap">
         <span class="find-box js-find-box">11%</span>
-        <span class="upload-img j-upload-img"></span>
-        <span class="upload-application j-upload-application"></span>
-        <p class="upload-text">正在上传应用，请稍后</p>
+        <span class="upload-img"></span>
+
+        <p class="upload-text">正在上传，请稍后...</p>
     </div>
 </div>
 
 <div class="container">
-    <span class="btn btn-success fileinput-button">
+    <span class="btn btn-success fileinput-button"  id="browse" href="javascript:;">
         <i class="glyphicon glyphicon-plus"></i>
-        <span id="browse" href="javascript:;">Select files...</span>
+        <span>Select files...</span>
     </span>
 </div>
 
@@ -76,19 +78,24 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Size(Byte)</th>
-            <th scope="col">Actions</th>
+            <th scope="col" colspan="2" style="text-align: center" width="5%">Action</th>
         </tr>
         </thead>
-        <tbody>
-        <c:forEach items="${pfiles}" var="pfile" varStatus="status">
-            <tr>
-                <th scope="row">${status.count}</th>
-                <td>${pfile.name}</td>
-                <td>${pfile.size}</td>
-                <td><a href="/download?filename=${pfile.name}">Download</a></td>
-            </tr>
-        </c:forEach>
-        </tbody>
+
+        <c:choose>
+            <c:when test="${pfiles!='[]'}">
+                <c:forEach items="${pfiles}" var="pfile" varStatus="status">
+                    <tr>
+                        <th scope="row">${status.count}</th>
+                        <td>${pfile.name}</td>
+                        <td>${pfile.size}</td>
+                        <td style="text-align: center"><a class="glyphicon glyphicon-download-alt" href="/download?filename=${pfile.name}"></a></td>
+                        <td style="text-align: center"><a class="glyphicon glyphicon-trash" href="/delete?filename=${pfile.name}"></a></td>
+                    </tr>
+                </c:forEach>
+            </c:when>
+        </c:choose>
+
     </table>
 </div>
 
@@ -109,3 +116,5 @@
 
 </body>
 </html>
+
+

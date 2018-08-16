@@ -18,14 +18,14 @@ public class DownloadServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String filePath = this.getServletContext().getRealPath("/WEB-INF/pakaged");
+        String filePath = this.getServletContext().getRealPath("/WEB-INF/fileUpload");
         String fileName = request.getParameter("filename");
         String fileFullPath = filePath + "/" + fileName;
 
         File file = new File(fileFullPath);
         if (!file.exists()) {
-            request.setAttribute("message", "您要下载的资源已被删除！");
-            request.getRequestDispatcher("/message.jsp").forward(request,response);
+//            request.setAttribute("message", "您要下载的资源已被删除！");
+//            request.getRequestDispatcher("/message.jsp").forward(request,response);
             return;
         }
 

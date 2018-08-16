@@ -8,10 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "SearchServlet")
+
+@WebServlet(name = "SearchServlet", urlPatterns = {"/search"}, loadOnStartup = 1)
 public class SearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String filePath = this.getServletContext().getRealPath("/WEB-INF/pakaged");
+        String filePath = this.getServletContext().getRealPath("/WEB-INF/fileUpload");
 
         String filterApk = request.getParameter("apkname");
 
