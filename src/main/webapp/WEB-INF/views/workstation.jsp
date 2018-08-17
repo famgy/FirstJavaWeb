@@ -13,11 +13,40 @@
     <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
     <%--<link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">--%>
     <link href="webjars/bootstrap-glyphicons/bdd2cbfba0/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <link href="webjars/jquery-file-upload/9.10.1/css/jquery.fileupload.css" rel="stylesheet">
-    <link href="webjars/jquery-file-upload/9.10.1/css/jquery.fileupload-ui.css" rel="stylesheet">
+    <%--<link href="webjars/jquery-file-upload/9.10.1/css/jquery.fileupload.css" rel="stylesheet">--%>
+    <%--<link href="webjars/jquery-file-upload/9.10.1/css/jquery.fileupload-ui.css" rel="stylesheet">--%>
     <%--<link href="webjars/perfect-scrollbar/0.8.1/css/perfect-scrollbar.css" rel="stylesheet">--%>
     <link href="/css/style.css" type="text/css" rel="stylesheet"/>
     <link  href="/css/application_list.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+        .div-delete {
+            width: 280px;
+            margin: 20px auto 0 auto;
+            padding-left: 50px;
+            height: 100px;
+            line-height: 23px;
+            background: url(/images/warning/delete-icon.png) no-repeat;
+            color: #a6a6a6;
+        }
+        .div-delete .red-color {
+            color: #f67676;
+        }
+        .delete-ok {
+            color: #666666;
+            font-size: 12px;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: solid 1px #ddd;
+            display: block;
+            border-radius: 3px;
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -55,11 +84,21 @@
     <h2>
         <span>上传应用</span>
     </h2>
-    <div class="form-horizontal progress-wrap">
+    <div class="progress-wrap">
         <span class="find-box js-find-box">11%</span>
         <span class="upload-img"></span>
-
         <p class="upload-text">正在上传，请稍后...</p>
+    </div>
+</div>
+<div class="pop-cont project-form" id="delete-box">
+    <h2>
+        <span>提示</span>
+        <a href="javascript:;" class="close js-delete-close" >X</a>
+    </h2>
+    <div class="div-delete">
+        <p class="red-color">您真的要删除吗？</p>
+        <div class="delete-ok" id="delete-do">确认删除</div>
+        <div class="delete-ok cancel">取消</div>
     </div>
 </div>
 
@@ -77,7 +116,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Size(Byte)</th>
+            <th scope="col">Size</th>
             <th scope="col" colspan="2" style="text-align: center" width="5%">Action</th>
         </tr>
         </thead>
@@ -88,9 +127,10 @@
                     <tr>
                         <th scope="row">${status.count}</th>
                         <td>${pfile.name}</td>
-                        <td>${pfile.size}</td>
+                        <td id="file-size">${pfile.size}</td>
                         <td style="text-align: center"><a class="glyphicon glyphicon-download-alt" href="/download?filename=${pfile.name}"></a></td>
-                        <td style="text-align: center"><a class="glyphicon glyphicon-trash" href="/delete?filename=${pfile.name}"></a></td>
+                        <td style="text-align: center"><a class="glyphicon glyphicon-trash js-delete" href="javascript:;" data-name="${pfile.name}"></a></td>
+                        <%--<td style="text-align: center"><a class="glyphicon glyphicon-trash" href="/delete?filename=${pfile.name}"></a></td>--%>
                     </tr>
                 </c:forEach>
             </c:when>
@@ -100,6 +140,7 @@
 </div>
 
 <script src="webjars/jquery/3.0.0/jquery.min.js"></script>
+<%--<script src="webjars/jquery-file-upload/9.10.1/js/jquery.fileupload-ui.js"></script>--%>
 <%--<script src="webjars/jquery-ui/1.9.0/development-bundle/ui/jquery.ui.widget.js"></script>--%>
 <%--<script src="webjars/jquery-file-upload/9.10.1/js/jquery.fileupload.js"></script>--%>
 <%--<script src="webjars/jquery-file-upload/9.10.1/js/jquery.iframe-transport.js"></script>--%>
@@ -108,11 +149,12 @@
 <script src="/js/application.js"></script>
 <script>
     var G_URLS={
-        'deletes':"/upload",
+        'delete':"/delete",
         'upload':"/upload",
         'bulk_upload':"/upload"
     };
 </script>
+
 
 </body>
 </html>

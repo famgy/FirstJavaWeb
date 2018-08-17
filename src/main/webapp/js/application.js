@@ -9,7 +9,7 @@ $(document).ready(function () {
                 $('.js-find-box').html(file.percent+'%');
             } else {
                 enterprise.closePop($('#upload-box'));
-
+                $('.js-find-box').html(file.percent+'%');
             }
         },
         FileUploaded: function(up, file, info) {
@@ -50,4 +50,43 @@ $(document).ready(function () {
     });
 
     uploader.init();
+
+    //delete file
+    $(".js-delete").click(function () {
+       enterprise.openPop($('#delete-box'));
+       var thiz = $(this);
+       var fileName = $(this).data('name');
+       $("#delete-do").data('name', fileName);
+    });
+
+    $(".js-delete-close,.cancel").click(function () {
+        enterprise.closePop($('#delete-box'));
+    })
+    
+    $("#delete-do").click(function () {
+        var fileName = $(this).data('name');
+        var fileNameJ={
+            'name':fileName
+        }
+        del(G_URLS.delete, fileNameJ);
+    });
+
+
+    function del(ajax_url,ajax_name){
+        $.ajax({
+            url: ajax_url,
+            cache:false,
+            type: 'post',
+            data:ajax_name,
+            success: function(response){
+                var msg=response[0];
+                if(msg.success){
+                    window.location.reload();
+                }else{
+                    enterprise.showFntext2_error(msg);
+                }
+            },
+            dataType: 'json'
+        });
+    }
 });
