@@ -27,8 +27,8 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/index.jsp">
-    <img src="/images/brands/fbrand.svg" width="30" height="30" alt="">
+  <a class="navbar-brand" href="./index.jsp">
+    <img src="./images/brands/fbrand.svg" width="30" height="30" alt="">
   </a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -47,14 +47,14 @@
 </nav>
 
 <div class="container" id="login">
-  <form method="post" action="/login" accept-charset="utf-8">
+  <form method="post" action="login" accept-charset="utf-8">
     <div class="input-prepend">
-      <span class="add-on"><img src="/images/login/user-solid.svg" width="25" height="25"></span>
+      <span class="add-on"><img src="./images/login/user-solid.svg" width="25" height="25"></span>
       <input id="username" type="text" name="user" required="required" placeholder="Username">
     </div>
 
     <div class="input-prepend">
-      <span class="add-on"><img src="/images/login/lock-solid.svg" width="25" height="25"></span>
+      <span class="add-on"><img src="./images/login/lock-solid.svg" width="25" height="25"></span>
       <input type="password" name="password" required="required" placeholder="Password" >
     </div>
 

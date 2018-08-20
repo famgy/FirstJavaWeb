@@ -20,6 +20,6 @@ public class WorkstationServlet extends HttpServlet {
         ArrayList<Pfile> pfileList = PfileService.getPfileList(filePath);
 
         request.setAttribute("pfiles", pfileList);
-        request.getRequestDispatcher("/WEB-INF/views/workstation.jsp").forward(request, response);
+        request.getRequestDispatcher("./WEB-INF/views/workstation.jsp").forward(request, response);
     }
 }

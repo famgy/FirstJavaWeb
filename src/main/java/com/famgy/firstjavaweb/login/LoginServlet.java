@@ -15,10 +15,10 @@ public class LoginServlet extends HttpServlet {
 
         if (user.equals("famgy") && password.equals("abcd")) {
             request.getSession().setAttribute("name", user);
-            response.sendRedirect("/workstation");
+            response.sendRedirect("workstation");
             //request.getRequestDispatcher("/WEB-INF/views/workstation.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("./index.jsp").forward(request, response);
         }
     }
 

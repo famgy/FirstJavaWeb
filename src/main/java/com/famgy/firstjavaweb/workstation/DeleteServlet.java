@@ -19,7 +19,7 @@ public class DeleteServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String filePath = this.getServletContext().getRealPath("/WEB-INF/fileUpload");
+        String filePath = this.getServletContext().getRealPath("./WEB-INF/fileUpload");
         String fileName = request.getParameter("name");
         String fileFullPath = filePath + "/" + fileName;
 

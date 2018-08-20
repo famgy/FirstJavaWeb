@@ -17,6 +17,6 @@ public class LoggingServlet extends HttpServlet {
         StringBuffer stringBuffer = PfileService.getLastPackageLogging();
 
         request.setAttribute("loggingbuffer", stringBuffer);
-        request.getRequestDispatcher("/WEB-INF/views/logging.jsp").forward(request, response);
+        request.getRequestDispatcher("./WEB-INF/views/logging.jsp").forward(request, response);
     }
 }

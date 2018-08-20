@@ -16,8 +16,8 @@
     <%--<link href="webjars/jquery-file-upload/9.10.1/css/jquery.fileupload.css" rel="stylesheet">--%>
     <%--<link href="webjars/jquery-file-upload/9.10.1/css/jquery.fileupload-ui.css" rel="stylesheet">--%>
     <%--<link href="webjars/perfect-scrollbar/0.8.1/css/perfect-scrollbar.css" rel="stylesheet">--%>
-    <link href="/css/style.css" type="text/css" rel="stylesheet"/>
-    <link  href="/css/application_list.css" rel="stylesheet" type="text/css"/>
+    <link href="./css/style.css" type="text/css" rel="stylesheet"/>
+    <link  href="./css/application_list.css" rel="stylesheet" type="text/css"/>
 
     <style>
         .div-delete {
@@ -26,7 +26,7 @@
             padding-left: 50px;
             height: 100px;
             line-height: 23px;
-            background: url(/images/warning/delete-icon.png) no-repeat;
+            background: url(./images/warning/delete-icon.png) no-repeat;
             color: #a6a6a6;
         }
         .div-delete .red-color {
@@ -51,22 +51,22 @@
 <body>
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand mb-0 h1" href="#">
-        <img src="/images/brands/fbrand.svg" width="30" height="30" alt="">
+        <img src="./images/brands/fbrand.svg" width="30" height="30" alt="">
     </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/workstation">Home</a>
+                <a class="nav-link" href="./workstation">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/logging">Logging</a>
+                <a class="nav-link" href="./logging">Logging</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/document">Document</a>
+                <a class="nav-link" href="./document">Document</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" action="/search" method="post">
+        <form class="form-inline my-2 my-lg-0" action="search" method="post">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="apkname">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
@@ -128,7 +128,7 @@
                         <th scope="row">${status.count}</th>
                         <td>${pfile.name}</td>
                         <td id="file-size">${pfile.size}</td>
-                        <td style="text-align: center"><a class="glyphicon glyphicon-download-alt" href="/download?filename=${pfile.name}"></a></td>
+                        <td style="text-align: center"><a class="glyphicon glyphicon-download-alt" href="download?filename=${pfile.name}"></a></td>
                         <td style="text-align: center"><a class="glyphicon glyphicon-trash js-delete" href="javascript:;" data-name="${pfile.name}"></a></td>
                         <%--<td style="text-align: center"><a class="glyphicon glyphicon-trash" href="/delete?filename=${pfile.name}"></a></td>--%>
                     </tr>
@@ -145,13 +145,12 @@
 <%--<script src="webjars/jquery-file-upload/9.10.1/js/jquery.fileupload.js"></script>--%>
 <%--<script src="webjars/jquery-file-upload/9.10.1/js/jquery.iframe-transport.js"></script>--%>
 <script src="webjars/plupload/3.1.2/js/plupload.full.min.js"></script>
-<script src="/js/enterprise.js"></script>
-<script src="/js/application.js"></script>
+<script src="./js/enterprise.js"></script>
+<script src="./js/application.js"></script>
 <script>
     var G_URLS={
-        'delete':"/delete",
-        'upload':"/upload",
-        'bulk_upload':"/upload"
+        'delete':"./delete",
+        'upload':"../upload"
     };
 </script>
 

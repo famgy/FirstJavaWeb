@@ -14,19 +14,19 @@
 <body>
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand mb-0 h1" href="#">
-        <img src="/images/brands/fbrand.svg" width="30" height="30" alt="">
+        <img src="./images/brands/fbrand.svg" width="30" height="30" alt="">
     </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/workstation">Home</a>
+                <a class="nav-link" href="./workstation">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/logging">Logging</a>
+                <a class="nav-link" href="./logging">Logging</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/document">Document</a>
+                <a class="nav-link" href="./document">Document</a>
             </li>
         </ul>
     </div>

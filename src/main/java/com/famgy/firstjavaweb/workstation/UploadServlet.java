@@ -55,7 +55,7 @@ public class UploadServlet extends HttpServlet {
                     jsono.put("size", item.getSize());
                     jsono.put("url", "upload?getfile=" + item.getName());
                     jsono.put("success", 1);
-                    jsono.put("redirect_url", "/workstation");
+                    jsono.put("redirect_url", "./workstation");
                     json.put(jsono);
                 }
             }
