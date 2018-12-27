@@ -17,12 +17,6 @@
       max-width: 300px;
       margin: 35px auto;
     }
-    #login input{
-      margin: 10px 0;
-    }
-    #submit{
-      padding:0px 20px;
-    }
   </style>
 </head>
 <body>
@@ -48,21 +42,26 @@
 
 <div class="container" id="login">
   <form method="post" action="login" accept-charset="utf-8">
-    <div class="input-prepend">
-      <span class="add-on"><img src="./images/login/user-solid.svg" width="25" height="25"></span>
-      <input id="username" type="text" name="user" required="required" placeholder="Username">
+    <div class="form-group row">
+      <span class="add-on"><img src="./images/login/user-solid.svg" width="30" height="30"></span>
+      <div class="col-sm-10">
+        <input id="username" type="text" name="user" required="required" placeholder="Username">
+      </div>
     </div>
-
-    <div class="input-prepend">
-      <span class="add-on"><img src="./images/login/lock-solid.svg" width="25" height="25"></span>
-      <input type="password" name="password" required="required" placeholder="Password" >
+    <div class="form-group row">
+      <span class="add-on"><img src="./images/login/lock-solid.svg" width="30" height="30"></span>
+      <div class="col-sm-10">
+        <input type="password" name="password" required="required" placeholder="Password" >
+      </div>
     </div>
-
     <div class="control-group" id="submit">
-      <input class="btn btn-block" type="submit" value="Sign in">
+      <input class="btn btn-secondary" type="submit" value="Sign in">
     </div>
   </form>
 </div>
+
+
+
 <script>
     document.getElementById("username").focus();
 </script>
